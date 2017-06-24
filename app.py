@@ -10,16 +10,30 @@ app.secret_key = "t\x1cJ\xce;\x88D\xdc\xa4^\xfa\x9f\xeb\xc5s\t\x02??\xc9X\xd1\xf
 @app.route("/")
 def home():
     if "user" not in session:
+        pass
         return redirect(url_for("login"))
     else:
         status = ""
         if "status" in request.args:
             status = request.args.get("status")
-        return render_template("index.html", status=status)
+        return render_template("index.html", title="poth")
 
 @app.route("/login/")
 def login():
-    return render_template("home.html", title="Login")
+    if "user" in session:
+        return redirect(url_for("home"))
+    if request.method == "GET":
+        return render_template("login.html", status="")
+    if request.form["enter"] == "Register":
+        register_message = auth.register(request.form["user"], request.form["pass"])
+        return render_template("login.html", status = register_message)
+    if request.form["enter"] == "Login":
+        login_message = auth.checkLogin(request.form["user"], request.form["pass"])
+        if (login_message == ""):
+            session["user"] = request.form["user"]
+            return redirect(url_for("home"))
+    return render_template("login.html", status = login_message)
+    
 
 @app.route("/logout/")
 def logout():
