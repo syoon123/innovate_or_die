@@ -37,10 +37,9 @@ def login():
 
 @app.route("/logout/")
 def logout():
-    if request.form["enter"] == "Logout":
-        session.pop("user")
-        print "this pussy DO pop for you"
-    return redirect(url_for("login"))
+    session.pop("user")
+    print "this pussy DO pop for you"
+    return redirect(url_for("home"))
 
 
 
