@@ -1,8 +1,17 @@
 from flask import Flask, render_template, request, url_for, session, redirect
 import hashlib, sqlite3, json
+from utils import auth
 
-db = "data/database.db"
+db = 'data/database.db'
 
 app = Flask(__name__)
-app.secret_key = 
+app.secret_key = 't\x1cJ\xce;\x88D\xdc\xa4^\xfa\x9f\xeb\xc5s\t\x02??\xc9X\xd1\xff\xe0\xd3\x7f\xc0\xe8\xfa\xc0c\xc3\xd7o\xc6\x9cV\x89\xb2\x97k\xac\x08\xa88\xdeS\x9b'
+
+@app.route("/")
+def home():
+    if 'user' not in session:
+        return redirect(url_for("login"))
+    else:
+        f = open('templates/template1/template1.html', 'r')
+        
 
