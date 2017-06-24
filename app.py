@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request, url_for, session, redirect
-import hashlib, sqlite3, json
+import hashlib, sqlite3, json, requests
 from utils import auth
 
 db = 'data/database.db'
 
 app = Flask(__name__)
 app.secret_key = "t\x1cJ\xce;\x88D\xdc\xa4^\xfa\x9f\xeb\xc5s\t\x02??\xc9X\xd1\xff\xe0\xd3\x7f\xc0\xe8\xfa\xc0c\xc3\xd7o\xc6\x9cV\x89\xb2\x97k\xac\x08\xa88\xdeS\x9b"
+
+url = "http://ip-api.com/json"
+geo = requests.get(url)
+city = geo.json()["city"] # By default, user's city assumed to be current location
 
 @app.route("/")
 def home():
