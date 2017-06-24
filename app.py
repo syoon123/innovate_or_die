@@ -18,12 +18,12 @@ def home():
             status = request.args.get("status")
         return render_template("index.html", title="poth")
 
-@app.route("/login/")
+@app.route("/login/", methods=["GET","POST"])
 def login():
     if "user" in session:
         return redirect(url_for("home"))
     if request.method == "GET":
-        return render_template("login.html", status="")
+        return render_template("login.html", status="lemow")
     if request.form["enter"] == "Register":
         register_message = auth.register(request.form["user"], request.form["pass"])
         return render_template("login.html", status = register_message)
