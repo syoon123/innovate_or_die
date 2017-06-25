@@ -53,7 +53,7 @@ def myLegislators():
     
     housedict = getlegislators.getLegislators(state)["house"]
     senatedict = getlegislators.getLegislators(state)["senate"]
-    return render_template("legislators.html", house = housedict, senate = senatedict)
+    return render_template("legislators.html", house = housedict, senate = senatedict, state_abbrev = state)
 
 if __name__ == "__main__":
     app.debug = True
