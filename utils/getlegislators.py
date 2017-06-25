@@ -3,7 +3,7 @@ import sqlite3, json, requests, urllib, urllib2
 
 # ProPublica Congress Data URL
 PROPUBLICA_URL = "https://api.propublica.org/congress/v1"
-API_KEY = "brEmpnztKf2ITVHkIqcXPaC5WZhbsN025JDoPSl7"
+API_KEY = json.loads(open("keys.json").read())["propublica"]["API_KEY"]
 
 def data(endpoint, params, headers):
     params_str = urllib.urlencode(params) if params else ""
