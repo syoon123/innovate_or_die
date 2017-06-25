@@ -43,9 +43,11 @@
 						<div class="text-overlay text-uppercase text-emphasis"> 
 							<strong><h2>Choose your state to<br /> find your Congress members</h2></strong>
 							<br />
+							<form method="post" action="legislators.html">
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-3">
 									<select class="form-control" id="state" name="state">
+										<option value="-1">Choose your city</option>
 										<option value="AK">Alaska</option>
 										<option value="AL">Alabama</option>
 										<option value="AR">Arkansas</option>
@@ -96,9 +98,11 @@
 										<option value="WI">Wisconsin</option>
 										<option value="WV">West Virginia</option>
 										<option value="WY">Wyoming</option>
-									</select>
-								</div>
+									</select> 
+								</div> <br>
+								<input type="submit" value="Submit">
 							</div>
+							</form>
 							
 							<div class="row">
 								<div class="col-md-12">
