@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta lang="en-us">
-		
-		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet" type="text/css">
-		<link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-		
-		<link href="https://fonts.googleapis.com/css?family=Electrolize|Lato|Source+Code+Pro:200,500" rel="stylesheet">
-		<link href="../static/style.css" rel="stylesheet" type="text/css">
-		
-		
-		<title>Insert Title Here</title>
-	</head>
+  <head>
+    <meta charset="utf-8">
+    <meta lang="en-us">
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Electrolize|Lato|Source+Code+Pro:200,500" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    
+    
+    <title>Insert Title Here</title>
+  </head>
 
-	<body>
-		<div class="container">
-			<div class="row header">
-					<div class="col-md-2 space">
-						<img src="../static/img/logo.png" width="150" height="150" alt="logo">
-					</div>
-					<div class="col-md-5 sink1">
-						<h1 class="title">Civic Watch</h1>
-					</div>
-					<div class="col-md-5 sink2">
-						<nav class="navbar space">
-								<ul>
-									<li><a href="/logout/">Log Out</a></li>
-									<li><a href="/">Home</a></li>
-								</ul>
-						</nav>
-					</div>
-			</div>
-
-
-		  <div class="row">
-				<div class="col-md-6">
-					<h1>Senate</h1>
-					<p>{{senate}}</p>
-				</div>
-			  
-				<div class="col-md-6">
-					<h1>House</h1>
-					<p>{{house}}</p>
-				</div>
-		</div>
+  <body>
+    <div class="container">
+      <div class="row header">
+	<div class="col-md-2 space">
+	  <img src="../static/img/logo.png" width="150" height="150" alt="logo">
 	</div>
+	<div class="col-md-5 sink1">
+	  <h1 class="title">Civic Watch</h1>
+	</div>
+	<div class="col-md-5 sink2">
+	  <nav class="navbar space">
+	    <ul>
+	      <li><a href="/logout/">Log Out</a></li>
+	      <li><a href="/">Home</a></li>
+	    </ul>
+	  </nav>
+	</div>
+      </div>
+
+
+      <div class="row">
+	<div class="col-md-6">
+	  <h1>Senate</h1>
+	  <ul>
+	  {% for person in senate %}
+	  <li>{{ person.first_name }} {{ person.last_name }}</li>
+	  {% endfor %}
+	  </ul>
+	</div>
+	
+	<div class="col-md-6">
+	  <h1>House</h1>
+	  {% for person in house %}
+	  {{ person.first_name }} {{ person.last_name }}
+	  {% endfor %}
+	</div>
+      </div>
+    </div>
   </body>
 </html>
