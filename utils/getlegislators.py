@@ -5,11 +5,6 @@ import sqlite3, json, requests, urllib, urllib2
 PROPUBLICA_URL = "https://api.propublica.org/congress/v1"
 API_KEY = json.loads(open("keys.json").read())["propublica"]["API_KEY"]
 
-# Twilio
-TWILIO_URL = "https://api.twilio.com/2010-04-01"
-ACCOUNT_SID = json.loads(open("keys.json").read())["twilio"]["ACCOUNT_SID"]
-AUTH_TOKEN = json.loads(open("keys.json").read())["twilio"]["AUTH_TOKEN"]
-
 def data(endpoint, params, headers):
     params_str = urllib.urlencode(params) if params else ""
     req_str = "{}/?{}".format(endpoint, params_str) if params_str else endpoint
@@ -56,4 +51,8 @@ def getLegislators(state):
     ret["senate"] = senate    
     return ret
 
+def getNumber(legis_id):
+    endpoint = "{}/members/{}.json".format(PROPUBLICA_URL, legis_id)
+    ret = data(endpoint, None, {"X-API-Key":API_KEY})["results"][0]["roles"][0]["phone"]
+    return ret
 
