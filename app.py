@@ -20,7 +20,7 @@ def home():
         status = ""
         if "status" in request.args:
             status = request.args.get("status")
-        return render_template("index.html", title="poth")
+        return render_template("index.html")
 
 @app.route("/login/", methods=["GET","POST"])
 def login():

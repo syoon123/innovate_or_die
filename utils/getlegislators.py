@@ -1,9 +1,14 @@
 from flask import Flask, render_template, request, url_for, session, redirect
 import sqlite3, json, requests, urllib, urllib2
 
-# ProPublica Congress Data URL
+# ProPublica Congress Data 
 PROPUBLICA_URL = "https://api.propublica.org/congress/v1"
 API_KEY = json.loads(open("keys.json").read())["propublica"]["API_KEY"]
+
+# Twilio
+TWILIO_URL = "https://api.twilio.com/2010-04-01"
+ACCOUNT_SID = json.loads(open("keys.json").read())["twilio"]["ACCOUNT_SID"]
+AUTH_TOKEN = json.loads(open("keys.json").read())["twilio"]["AUTH_TOKEN"]
 
 def data(endpoint, params, headers):
     params_str = urllib.urlencode(params) if params else ""
