@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta lang="en-us">
-    
+
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet" type="text/css">
     <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Electrolize|Lato|Source+Code+Pro:200,500" rel="stylesheet">
     <link href="../static/style.css" rel="stylesheet" type="text/css">
-    
-    
+
+    <script src="../static/bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="../static/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+
+
     <title>Civic Watch - {{state_abbrev}} Legislators</title>
   </head>
 
@@ -37,49 +40,61 @@
       </div>
 
 
-      <div class="row">
-	<div class="col-md-6">
-	  <h1>Senate</h1>
-	  <ul>
-	  {% for person in senate %}
-		 {% if person.current_party == "D" %}
-		  <li> <strong style="color: blue;">{{ person.first_name }} {{ person.last_name }} </strong></li>
-	  	  {% endif %}
-		  
-		  {% if person.current_party == "R" %}
-		  <li> <strong style="color: red;">{{ person.first_name }} {{ person.last_name }} </strong></li>
-	  	  {% endif %} 
-	      
-		  <ul>
-			  <li>Next Election: {{ person.next_election }}</li>	
-	      </ul>
-		  
-	   <br/>
-	 {% endfor %}
-	  </ul>
-	</div>
-	
-	<div class="col-md-6">
-	  <h1>House</h1>
-	  {% for person in house %}
-	  <ul>
-		  {% if person.current_party == "D" %}
-		  <li> <strong style="color: blue;">{{ person.first_name }} {{ person.last_name }} </strong></li>
-	  	  {% endif %}
-		  
-		  {% if person.current_party == "R" %}
-		  <li> <strong style="color: red;">{{ person.first_name }} {{ person.last_name }} </strong></li>
-	  	  {% endif %} 
-		  
-		  <ul>
-			<li>Next Election: {{ person.next_election }}</li>
-	      </ul>
-	  </ul>	
-	
-	  <br/>
-	  {% endfor %}
-	</div>
-	</div>
+    <div class="row">
+        	<div class="col-md-6">
+        	  <h1>Senate</h1>
+        	  <ul>
+        	  {% for person in senate %}
+        		 {% if person.current_party == "D" %}
+        		  <li> <strong style="color: blue;">{{ person.first_name }} {{ person.last_name }} </strong></li>
+        	  	  {% endif %}
+
+        		  {% if person.current_party == "R" %}
+        		  <li> <strong style="color: red;">{{ person.first_name }} {{ person.last_name }} </strong></li>
+        	  	  {% endif %}
+
+        		  <ul>
+        			  <li>Next Election: {{ person.next_election }}</li>
+                <li>Phone Number: {{ person.phone }} </li>
+        	    </ul>
+
+        	   <br/>
+        	 {% endfor %}
+        	  </ul>
+            <h3>Tips for calling representatives!</h3>
+            <ol>
+              <li>Keep your call short and direct-- don't get carried away!</li>
+              <li>Call only <em>your</em> state representatives.</li>
+              <li><strong>Mention that you live in the state they represent!</strong></li>
+            </ol>
+
+            <h3>Guidline for phone calls:</h3>
+            <p>Hello, my name is _________, I live in (my state), zipcode 00000. I (am opposed to/support) _______ and encourage the senator to (be opposed to/support) as well! </p>
+          </div>
+
+        	<div class="col-md-6">
+        	  <h1>House</h1>
+        	  {% for person in house %}
+        	  <ul>
+        		  {% if person.current_party == "D" %}
+        		  <li> <strong style="color: blue;">{{ person.first_name }} {{ person.last_name }} </strong></li>
+        	  	  {% endif %}
+
+        		  {% if person.current_party == "R" %}
+        		  <li> <strong style="color: red;">{{ person.first_name }} {{ person.last_name }} </strong></li>
+        	  	  {% endif %}
+
+        		  <ul>
+        			<li>Next Election: {{ person.next_election }}</li>
+              <li>Phone Number: {{ person.phone }} </li>
+
+        	     </ul>
+        	  </ul>
+
+        	  <br/>
+        	  {% endfor %}
+        	</div>
     </div>
+
   </body>
 </html>
