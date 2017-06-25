@@ -21,25 +21,31 @@ def getLegislators(state):
     # Prune dicts
     house = []    
     for member in house_list:
-        to_add = {}
-        to_add["first_name"] = member["first_name"]
-        to_add["last_name"] = member["last_name"]
-        to_add["current_party"] = member["party"]
-        to_add["id"] = member["id"]
-        to_add["phone"] = member["phone"]
-        to_add["next_election"] = member["next_election"]
-        house.append(to_add)
+        if member["state"] == state:
+            to_add = {}
+            to_add["first_name"] = member["first_name"]
+            to_add["last_name"] = member["last_name"]
+            to_add["current_party"] = member["party"]
+            to_add["id"] = member["id"]
+            to_add["phone"] = member["phone"]
+            to_add["next_election"] = member["next_election"]
+            house.append(to_add)
+        else:
+            pass
 
     senate = []
     for member in senate_list:
-        to_add = {}
-        to_add["first_name"] = member["first_name"]
-        to_add["last_name"] = member["last_name"]
-        to_add["current_party"] = member["party"]
-        to_add["id"] = member["id"]
-        to_add["phone"] = member["phone"]
-        to_add["next_election"] = member["next_election"]        
-        senate.append(to_add)
+        if member["state"] == state:
+            to_add = {}
+            to_add["first_name"] = member["first_name"]
+            to_add["last_name"] = member["last_name"]
+            to_add["current_party"] = member["party"]
+            to_add["id"] = member["id"]
+            to_add["phone"] = member["phone"]
+            to_add["next_election"] = member["next_election"]        
+            senate.append(to_add)
+        else:
+            pass
 
     ret["house"] = house
     ret["senate"] = senate    
