@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, session, redirect
 import hashlib, sqlite3, json, requests
-from utils import auth
+from utils import auth, getlegislators
 
 db = 'data/database.db'
 
@@ -46,8 +46,9 @@ def logout():
 
 @app.route("/<state>/legislators/")
 def myLegislators(state):
-    
-    return render_template("legislators.html")
+    housedict = getlegislators.getLegislators(state)["house"]
+    senatedict = getlegislators.getLegislators(state)["senate"]
+    return render_template("legislators.html", house = housedict, senate = senatedict)
 
 if __name__ == "__main__":
     app.debug = True
