@@ -1,9 +1,10 @@
 * {
 /*	border: 1px solid yellowgreen;*/
+	color: black;
 }
 
 body {
-	font-family: 'Lato', sans-serif;
+	color: black;
 }
 
 h1, h2, h3 {
@@ -26,7 +27,14 @@ li {
 	display: inline;
 	float: right;
 	padding: 10px;
+	font-weight: 500;
 	font-family: 'Source Code Pro', monospace;
+}
+
+a {
+	font-family: 'Source Code Pro', monospace;
+	text-decoration: none;
+	color: black;
 }
 
 
@@ -48,9 +56,34 @@ li {
 }
 
 .back-img {
-	filter: blur(5px) grayscale(15%);
+	filter: grayscale(80%);
 }
 
 .location {
 	font-size: 24px
+}
+
+.title {
+	color: dimgray;
+	font-size: 5em;
+	font-weight: lighter;
+	text-transform: uppercase;
+	font-family: 'Electrolize', sans-serif;
+}
+
+.header {
+	position: relative;
+	width: 100%;
+}
+
+.sink1{
+	position: absolute;
+	top: 5em;
+	right: 30em;
+}
+
+.sink2{
+	position: absolute;
+	top: 6.5em;
+	right: 0;
 }
