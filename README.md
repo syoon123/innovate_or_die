@@ -17,7 +17,4 @@ After registering and logging in, the user either provides the state they're fro
 * http://ip-api.com/docs/api:json/
 
 ## Contributors
-Sarah Yoon
-Olivia Ross
-Nalo Turner
-Isabella Berry
+Sarah Yoon, Olivia Ross, Nalo Turner, Isabella Berry
