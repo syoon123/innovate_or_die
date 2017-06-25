@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, session, redirect
 import hashlib, sqlite3, json, requests
-from utils import auth
+from utils import auth, getlegislators
 
 db = 'data/database.db'
 
@@ -9,7 +9,7 @@ app.secret_key = "t\x1cJ\xce;\x88D\xdc\xa4^\xfa\x9f\xeb\xc5s\t\x02??\xc9X\xd1\xf
 
 url = "http://ip-api.com/json"
 geo = requests.get(url)
-city = geo.json()["city"] # By default, user's city assumed to be current location
+state = geo.json()["region"]
 
 @app.route("/")
 def home():
@@ -38,14 +38,17 @@ def login():
             return redirect(url_for("home"))
     return render_template("login.html", status = login_message)
     
-
 @app.route("/logout/")
 def logout():
     session.pop("user")
     print "this pussy DO pop for you"
     return redirect(url_for("home"))
 
-
+@app.route("/<state>/legislators/")
+def myLegislators(state):
+    housedict = getlegislators.getLegislators(state)["house"]
+    senatedict = getlegislators.getLegislators(state)["senate"]
+    return render_template("legislators.html", house = housedict, senate = senatedict)
 
 if __name__ == "__main__":
     app.debug = True
