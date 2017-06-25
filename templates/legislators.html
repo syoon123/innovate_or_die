@@ -11,43 +11,43 @@
 		<link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 		
 		<link href="https://fonts.googleapis.com/css?family=Electrolize|Lato|Source+Code+Pro:200,500" rel="stylesheet">
-		<link href="../static/style.css" rel="stylesheet" type="text/css">
+		<link href="../../static/style.css" rel="stylesheet" type="text/css">
 		
 		
 		<title>Insert Title Here</title>
 	</head>
 
 	<body>
-      	<div class="row header">
-				<div class="col-md-2 space">
-					<img src="../static/img/logo.png" width="150" height="150" alt="logo">
-				</div>
-				<div class="col-md-5 sink1">
-					<h1 class="title">Civic Watch</h1>
-				</div>
-				<div class="col-md-5 sink2">
-					<nav class="navbar space">
-							<ul>
-								<li><a href="/logout/">Log Out</a></li>
-								<li><a href="/">Home</a></li>
-							</ul>
-					</nav>
-				</div>
+		<div class="container">
+			<div class="row header">
+					<div class="col-md-2 space">
+						<img src="../../static/img/logo.png" width="150" height="150" alt="logo">
+					</div>
+					<div class="col-md-5 sink1">
+						<h1 class="title">Civic Watch</h1>
+					</div>
+					<div class="col-md-5 sink2">
+						<nav class="navbar space">
+								<ul>
+									<li><a href="/logout/">Log Out</a></li>
+									<li><a href="/">Home</a></li>
+								</ul>
+						</nav>
+					</div>
 			</div>
-      
-      <hr/>
-      
-      <div class="row">
-	<h1>Senate</h1>
-	<div class="col-md-12">
-	  {{senate}}
-	</div>
-	<h1>House</h1>
-	<div class="col-md-12">
-	  {{house}}
-	</div>
-      </div>
 
-    </div>
+
+		  <div class="row">
+				<div class="col-md-6">
+					<h1>Senate</h1>
+					<p>{{senate}}</p>
+				</div>
+			  
+				<div class="col-md-6">
+					<h1>House</h1>
+					<p>{{house}}</p>
+				</div>
+		</div>
+	</div>
   </body>
 </html>
