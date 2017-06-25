@@ -7,9 +7,7 @@ db = 'data/database.db'
 app = Flask(__name__)
 app.secret_key = "t\x1cJ\xce;\x88D\xdc\xa4^\xfa\x9f\xeb\xc5s\t\x02??\xc9X\xd1\xff\xe0\xd3\x7f\xc0\xe8\xfa\xc0c\xc3\xd7o\xc6\x9cV\x89\xb2\x97k\xac\x08\xa88\xdeS\x9b"
 
-url = "http://ip-api.com/json"
-geo = requests.get(url)
-state = geo.json()["region"]
+
 
 @app.route("/")
 def home():
@@ -44,8 +42,16 @@ def logout():
     print "this pussy DO pop for you"
     return redirect(url_for("home"))
 
-@app.route("/<state>/legislators/")
-def myLegislators(state):
+@app.route("/legislators/", methods=["GET"] )
+def myLegislators():
+
+    if request.form["state"] == "":
+        url = "http://ip-api.com/json"
+        geo = requests.get(url)
+        state = geo.json()["region"]
+    else:
+        state = request.form["state"]
+    
     housedict = getlegislators.getLegislators(state)["house"]
     senatedict = getlegislators.getLegislators(state)["senate"]
     return render_template("legislators.html", house = housedict, senate = senatedict)
