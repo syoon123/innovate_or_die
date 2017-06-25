@@ -10,6 +10,7 @@ ul {
 }
 
 li {
+	font-size: 30px;
 	display: inline;
 	float: right;
 	padding: 10px;
