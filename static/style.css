@@ -76,6 +76,10 @@ a {
 	width: 100%;
 }
 
+p {
+    font-size: 1.3em;   
+}
+
 .sink1{
 	position: absolute;
 	top: 5em;
