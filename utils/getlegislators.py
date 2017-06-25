@@ -15,14 +15,34 @@ def getLegislators(state):
     ret = {}
     house_endpoint = "{}/115/{}/members.json".format(PROPUBLICA_URL, "house")
     senate_endpoint = "{}/115/{}/members.json".format(PROPUBLICA_URL, "senate")
-    house_dict = data(house_endpoint, None, {"X-API-Key":API_KEY})    
-    senate_dict = data(senate_endpoint, None, {"X-API-Key":API_KEY})
+    house_list = data(house_endpoint, None, {"X-API-Key":API_KEY})["results"][0]["members"]   
+    senate_list = data(senate_endpoint, None, {"X-API-Key":API_KEY})["results"][0]["members"]
 
     # Prune dicts
-    
-    
-    ret["house"] = house_dict
-    ret["senate"] = senate_dict    
+    house = []    
+    for member in house_list:
+        to_add = {}
+        to_add["first_name"] = member["first_name"]
+        to_add["last_name"] = member["last_name"]
+        to_add["current_party"] = member["party"]
+        to_add["id"] = member["id"]
+        to_add["phone"] = member["phone"]
+        to_add["next_election"] = member["next_election"]
+        house.append(to_add)
+
+    senate = []
+    for member in senate_list:
+        to_add = {}
+        to_add["first_name"] = member["first_name"]
+        to_add["last_name"] = member["last_name"]
+        to_add["current_party"] = member["party"]
+        to_add["id"] = member["id"]
+        to_add["phone"] = member["phone"]
+        to_add["next_election"] = member["next_election"]        
+        senate.append(to_add)
+
+    ret["house"] = house
+    ret["senate"] = senate    
     return ret
 
 
